@@ -24,14 +24,16 @@ while 1:
         n=int(n)
         for i in range(n):
             name=input('Enter the name:')
-            names.append(name)
+            number=input('Enter the number')
+            if number.isnumeric()==True:
+                names.append([name,number])
         print("All entries are added")
     elif x==2:
         name=input('Enter the name to remove:')
         flag = 0
         for i in range(len(names)):
-            if name==names[i]:
-                names.remove(name)
+            if name==names[i][0]:
+                names.remove(names[i])
                 print("Item removed")
                 flag=1
                 break
@@ -42,7 +44,7 @@ while 1:
             print("No entry to print")
             continue
         for i in range(len(names)):
-            print(i+1,'.',names[i])
+            print(i+1,'.',names[i][0],':',names[i][1])
     elif x==4:
         names.sort()
         print("List sorted")
@@ -50,8 +52,9 @@ while 1:
         name=input("Enter the number to search:")
         flag = 0
         for i in range(len(names)):
-            if name==names[i]:
+            if name==names[i][0]:
                 print("Saved as",i+1,"th entry")
+                print("Number:",names[i][1])
                 flag=1
                 break
         if flag==0:
